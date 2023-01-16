@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageItem extends StatefulWidget {
-  const LanguageItem({Key? key, required this.index}) : super(key: key);
+  LanguageItem({Key? key, required this.index , required this.title , required this.subtitle , required this.isSelected}) : super(key: key);
   final int index;
+  final String title ;
+  final String subtitle ;
+  final Function(String title) isSelected ;
+
 
   @override
   State<LanguageItem> createState() => _LanguageItemState();
@@ -38,12 +43,12 @@ class _LanguageItemState extends State<LanguageItem> {
       ),
       height: 75,
       child: RadioListTile(
-          title: const Text('Hello'),
-          subtitle: const Text("how are you"),
+          title: Text(widget.title),
+          subtitle: Text(widget.subtitle),
           activeColor: _primaryColor,
           selected: widget.index == groupValue,
           secondary: Icon(
-            Icons.ac_unit,
+            Icons.language,
             color: widget.index == groupValue
                 ? _primaryColor
                 : Colors.grey.shade400,
@@ -51,6 +56,7 @@ class _LanguageItemState extends State<LanguageItem> {
           value: widget.index,
           groupValue: groupValue,
           onChanged: (val) {
+            widget.isSelected(widget.title) ;
             selectTile(val!);
           }),
     );
