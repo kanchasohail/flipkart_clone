@@ -16,12 +16,6 @@ class LanguageItem extends StatefulWidget {
 class _LanguageItemState extends State<LanguageItem> {
   int groupValue = -1;
 
-  @override
-  void initState() {
-    super.initState();
-    // groupValue = -1;
-  }
-
   void selectTile(int val) {
     setState(() {
       groupValue = val;

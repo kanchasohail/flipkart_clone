@@ -1,5 +1,6 @@
 import 'package:flipkart_clone/models/language_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageProvider with ChangeNotifier{
 
@@ -20,6 +21,11 @@ class LanguageProvider with ChangeNotifier{
   List<LanguageModel> get languageList {
     return [..._languageList];
   }
+
+  Future<String> getLanguage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return await prefs.get('Language').toString();
+}
 
 
 }

@@ -1,4 +1,9 @@
 import 'package:flipkart_clone/providers/Language_provider.dart';
+import 'package:flipkart_clone/screens/account_page.dart';
+import 'package:flipkart_clone/screens/cart_page.dart';
+import 'package:flipkart_clone/screens/categories_page.dart';
+import 'package:flipkart_clone/screens/home_page.dart';
+import 'package:flipkart_clone/screens/notifications_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -40,9 +45,7 @@ class MyApp extends StatelessWidget {
               .copyWith(primary: Colors.blue, secondary: Colors.blueGrey),
         ),
 
-        routes: {
-          MyHomeClass.routeName : (context) => MyHomeClass()
-        },
+        routes: {MyHomeClass.routeName: (context) => MyHomeClass()},
         // home: const MyHomeClass(),
         home: AnimatedSplashScreen(
           // splash: Icon(Icons.home),
@@ -51,18 +54,32 @@ class MyApp extends StatelessWidget {
           splashTransition: SplashTransition.fadeTransition,
           backgroundColor: Colors.blue,
           // nextScreen: MyHomeClass(),
-          nextScreen: isViewed != 0
-              ? SelectLanguageScreen()
-              : MyHomeClass(),
+          nextScreen: isViewed != 0 ? SelectLanguageScreen() : MyHomeClass(),
         ),
       ),
     );
   }
 }
 
-class MyHomeClass extends StatelessWidget {
+class MyHomeClass extends StatefulWidget {
   static const routeName = '/my-home-class';
-  const MyHomeClass({super.key});
+
+  MyHomeClass({super.key});
+
+  @override
+  State<MyHomeClass> createState() => _MyHomeClassState();
+}
+
+class _MyHomeClassState extends State<MyHomeClass> {
+  int _currentIndex = 0;
+
+  final screens = [
+    HomePage(),
+    CategoriesPage(),
+    NotificationsPage(),
+    AccountPage(),
+    CartPage()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -70,7 +87,34 @@ class MyHomeClass extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Flipkart'),
       ),
+      body: IndexedStack(index: _currentIndex, children: screens),
       drawer: SideDrawer(),
+      bottomNavigationBar: BottomNavigationBar(
+        // backgroundColor: Colors.blueGrey,
+        // selectedItemColor: Colors.blue,
+        // unselectedItemColor: Colors.grey.shade600,
+        // unselectedFontSize: 12,
+        selectedFontSize: 12,
+
+        type: BottomNavigationBarType.fixed,
+        iconSize: 26,
+        currentIndex: _currentIndex,
+        onTap: (index) => setState(() {
+          _currentIndex = index;
+        }),
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(Icons.home_outlined), label: 'Home'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.category_outlined), label: 'Categories'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.notifications_outlined), label: 'Notifications'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.person_pin_circle_outlined), label: 'Account'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart_outlined), label: 'Cart'),
+        ],
+      ),
     );
   }
 }
