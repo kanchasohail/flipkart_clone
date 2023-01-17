@@ -1,5 +1,7 @@
-import 'package:flipkart_clone/widgets/custom_switch.dart';
+import 'package:flipkart_clone/widgets/components/sliding_item.dart';
 import 'package:flutter/material.dart';
+
+import 'package:flipkart_clone/widgets/components/custom_switch.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
@@ -51,8 +53,8 @@ class HomePage extends StatelessWidget {
                   flex: 1,
                   child: Container(
                     margin: EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.red, width: 1)),
+                    // decoration: BoxDecoration(
+                    //     border: Border.all(color: Colors.red, width: 1)),
 
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -65,7 +67,9 @@ class HomePage extends StatelessWidget {
                             child: Text(
                               'Brand Mall',
                               style: TextStyle(
-                                  fontSize: 10, fontWeight: FontWeight.w600),
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.grey.shade700),
                             ),
                             fit: BoxFit.contain),
                         const SizedBox(
@@ -73,7 +77,7 @@ class HomePage extends StatelessWidget {
                         ),
                         CustomSwitch(),
                         const SizedBox(
-                          height: 11,
+                          height: 17,
                         ),
                       ],
                     ),
@@ -85,29 +89,41 @@ class HomePage extends StatelessWidget {
                     margin: EdgeInsets.only(right: 8),
                     padding: EdgeInsets.all(8),
                     decoration: BoxDecoration(
+                        color: Colors.grey.shade100,
                         borderRadius: BorderRadius.all(Radius.circular(6)),
-                        border: Border.all(color: Colors.grey, width: 2)),
+                        border:
+                            Border.all(color: Colors.grey.shade500, width: 1)),
                     child: Row(
                       children: [
-                        Icon(Icons.search),
-                        SizedBox(
+                        Icon(
+                          Icons.search,
+                          color: Colors.grey.shade500,
+                        ),
+                        const SizedBox(
                           width: 10,
                         ),
-                        Expanded(child: Text('Search for products')),
-                        SizedBox(
+                        const Expanded(child: Text('Search for products')),
+                        const SizedBox(
                           width: 30,
                         ),
-                        Icon(Icons.mic),
-                        SizedBox(
+                        Icon(
+                          Icons.mic,
+                          color: Colors.grey.shade500,
+                        ),
+                        const SizedBox(
                           width: 10,
                         ),
-                        Icon(Icons.camera_alt_outlined)
+                        Icon(
+                          Icons.camera_alt_outlined,
+                          color: Colors.grey.shade500,
+                        )
                       ],
                     ),
                   ),
                 )
               ],
             ),
+            SlidingItem()
           ],
         ),
       ),
