@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:carousel_slider/carousel_slider.dart';
 
 class CartPage extends StatefulWidget {
+  static const routeName = '/cart-page';
   const CartPage({Key? key}) : super(key: key);
 
   @override
