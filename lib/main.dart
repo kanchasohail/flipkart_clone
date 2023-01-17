@@ -1,3 +1,4 @@
+import 'package:flipkart_clone/providers/side_drawer_list_provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => LogProvider()),
         ChangeNotifierProvider(create: (_) => LanguageProvider()),
+        ChangeNotifierProvider(create: (_) => SideDrawerListProvider())
       ],
       child: MaterialApp(
         title: 'Flipkart Clone',
