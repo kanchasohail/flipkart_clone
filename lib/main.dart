@@ -1,18 +1,19 @@
-import 'package:flipkart_clone/providers/Language_provider.dart';
-import 'package:flipkart_clone/screens/account_page.dart';
-import 'package:flipkart_clone/screens/cart_page.dart';
-import 'package:flipkart_clone/screens/categories_page.dart';
-import 'package:flipkart_clone/screens/home_page.dart';
-import 'package:flipkart_clone/screens/notifications_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:flipkart_clone/providers/Language_provider.dart';
 import 'package:flipkart_clone/providers/log_provider.dart';
 
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flipkart_clone/screens/select_language_screen.dart';
+
+import 'package:flipkart_clone/pages/account_page.dart';
+import 'package:flipkart_clone/pages/cart_page.dart';
+import 'package:flipkart_clone/pages/categories_page.dart';
+import 'package:flipkart_clone/pages/home_page.dart';
+import 'package:flipkart_clone/pages/notifications_page.dart';
 
 import 'package:flipkart_clone/widgets/side_drawer.dart';
 import 'package:flipkart_clone/widgets/splash_icon.dart';
@@ -84,9 +85,9 @@ class _MyHomeClassState extends State<MyHomeClass> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flipkart'),
-      ),
+      // appBar: AppBar(
+      //   title: const Text('Flipkart'),
+      // ),
       body: IndexedStack(index: _currentIndex, children: screens),
       drawer: SideDrawer(),
       bottomNavigationBar: BottomNavigationBar(
