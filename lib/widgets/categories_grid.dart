@@ -10,11 +10,12 @@ class CategoriesGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Container(
-      height: 220,
+      height: 222,
       // color: Colors.green,
       margin: EdgeInsets.symmetric(vertical: 10),
       padding: EdgeInsets.all(5),
       child: GridView(
+        physics: ScrollPhysics(),
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
             maxCrossAxisExtent: 80,
             mainAxisSpacing: 10,

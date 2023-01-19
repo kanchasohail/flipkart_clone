@@ -21,4 +21,7 @@ class CategoryProvider with ChangeNotifier{
   List<CategoryModel> get categoryListItems {
     return [..._categoriesList].toList();
 }
+
+ // https://rukminim1.flixcart.com/fk-p-flap/2000/2000/image/86411e6addfb2db6.jpg
+
 }
