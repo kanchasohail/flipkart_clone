@@ -1,3 +1,4 @@
+import 'package:flipkart_clone/widgets/categories_grid.dart';
 import 'package:flipkart_clone/widgets/components/app_bar_row_with_logo.dart';
 import 'package:flipkart_clone/widgets/search_bar_row_with_switch.dart';
 import 'package:flutter/material.dart';
@@ -21,44 +22,76 @@ class _CartPageState extends State<CartPage> {
     // return Center( child: Text('Cart Page'),);
     return SafeArea(
         child: CustomScrollView(
-          slivers: [
-            SliverAppBar(
-              automaticallyImplyLeading: false,
-              backgroundColor: Colors.purple,
-              title: AppBarRowWithLogo(),
-              systemOverlayStyle: SystemUiOverlayStyle(
-                statusBarColor: Colors.blue
-              ),
+      slivers: [
+        SliverAppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.purple,
+          title: AppBarRowWithLogo(),
+          systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: Colors.blue),
+        ),
+        SliverList(
+            delegate: SliverChildListDelegate([
+          StickyHeader(
+            header: SearchBarRowWithSwitch(),
+            content: Column(
+              children: [
+                SlidingItem(),
+               CategoriesGrid(),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+                Container(
+                  height: 300,
+                  color: Colors.green,
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                ),
+              ],
             ),
-            SliverList(
-                delegate: SliverChildListDelegate(
-                  [
-                      StickyHeader(
-                          header: SearchBarRowWithSwitch(),
-                          content: Column(
-                            children: [
-                              SlidingItem(),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                              Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                            ],
-                          ),
-
-                      )
-                  ]
-                )
-            )
-          ],
-
-        )
-    );
+          )
+        ]))
+      ],
+    ));
   }
 }

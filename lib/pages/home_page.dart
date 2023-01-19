@@ -1,3 +1,4 @@
+import 'package:flipkart_clone/widgets/categories_grid.dart';
 import 'package:flipkart_clone/widgets/components/app_bar_row_with_logo.dart';
 import 'package:flipkart_clone/widgets/search_bar_row_with_switch.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class HomePage extends StatelessWidget {
               children: [
 
                 SlidingItem(),
+                CategoriesGrid(),
                 Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
                 Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
                 Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
