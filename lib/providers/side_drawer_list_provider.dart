@@ -8,7 +8,7 @@ class SideDrawerListProvider with ChangeNotifier{
 List sideDrawerItems = [
   SideDrawerListModel(icon: Icon(Icons.add , color: Colors.grey.shade600,), title: 'Flipkart Plus Zone', routeName: CartPage.routeName),
   SideDrawerListModel(icon: Icon(Icons.window_sharp , color: Colors.grey.shade600,), title: 'All Categories', routeName: CartPage.routeName),
-  SideDrawerListModel(icon: Icon(Icons.store , color: Colors.grey.shade600,), title: 'TrendingStores', routeName: CartPage.routeName),
+  SideDrawerListModel(icon: Icon(Icons.store , color: Colors.grey.shade600,), title: 'Trending Stores', routeName: CartPage.routeName),
   SideDrawerListModel(icon: Icon(Icons.dialpad_rounded , color: Colors.grey.shade600,), title: 'More on Flipkart', routeName: CartPage.routeName),
   SideDrawerListModel(icon: Icon(Icons.language_outlined , color: Colors.grey.shade600,), title: 'Choose Language', routeName: CartPage.routeName),
   SideDrawerListModel(icon: Icon(Icons.local_offer , color: Colors.grey.shade600,), title: 'Offer Zone', routeName: CartPage.routeName),
