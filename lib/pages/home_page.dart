@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flipkart_clone/widgets/categories_grid.dart';
 import 'package:flipkart_clone/widgets/components/app_bar_row_with_logo.dart';
 import 'package:flipkart_clone/widgets/components/small_square_container.dart';
@@ -15,7 +16,14 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(child: CustomScrollView(
+    final Icon _holderIcon = Icon(
+      Icons.image_outlined,
+      color: Colors.grey,
+      size: double.infinity,
+    );
+    final Color _holderColor = Colors.grey.shade300 ;
+    return SafeArea(
+        child: CustomScrollView(
       slivers: [
         SliverAppBar(
           title: AppBarRowWithLogo(),
@@ -25,8 +33,8 @@ class HomePage extends StatelessWidget {
           // ),
           backgroundColor: Colors.white,
         ),
-        SliverList(delegate: SliverChildListDelegate([
-
+        SliverList(
+            delegate: SliverChildListDelegate([
           StickyHeader(
             header: SearchBarRowWithSwitch(),
             content: Column(
@@ -37,34 +45,46 @@ class HomePage extends StatelessWidget {
                   height: 70,
                   margin: EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey , width: 2),
-                    borderRadius: BorderRadius.circular(8)
-                  ),
-                  child: ClipRRect(borderRadius: BorderRadius.circular(6),
-                      child: Image.network('https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/448c152993ceefb3.jpeg' , fit: BoxFit.cover,)),),
+                    color: _holderColor,
+                      border: Border.all(color: Colors.grey, width: 2),
+                      borderRadius: BorderRadius.circular(8)),
+                  child: ClipRRect(
+                      borderRadius: BorderRadius.circular(6),
+                      child: CachedNetworkImage(
+                        fit: BoxFit.cover,
+                        imageUrl:
+                            'https://rukminim1.flixcart.com/fk-p-flap/1688/280/image/448c152993ceefb3.jpeg',
+                        placeholder: (ctx, url) => _holderIcon,
+                        errorWidget: (ctx, url, error) => _holderIcon,
+                      )),
+                ),
                 Container(
                   margin: EdgeInsets.only(top: 8),
                   height: 500,
                   width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Color(0xff54A1E1)
-                  ),
+                  decoration: BoxDecoration(color: Color(0xff54A1E1)),
                   child: Padding(
                     padding: EdgeInsets.all(16),
-                    child: GridView(physics: ScrollPhysics(),
+                    child: GridView(
+                      physics: ScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        crossAxisSpacing: 10,
-                        mainAxisSpacing: 10,
-                        childAspectRatio: 3/3.8
-
-                      ),
+                          maxCrossAxisExtent: 200,
+                          crossAxisSpacing: 10,
+                          mainAxisSpacing: 10,
+                          childAspectRatio: 3 / 3.8),
                       children: [
-                        SquareGridItem('https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg' , 'Router'),
-                        SquareGridItem('https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg' , 'Router'),
-                        SquareGridItem('https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg' , 'Router'),
-                        SquareGridItem('https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg' , 'Router'),
-
+                        SquareGridItem(
+                            'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                            'Router'),
+                        SquareGridItem(
+                            'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                            'Router'),
+                        SquareGridItem(
+                            'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                            'Router'),
+                        SquareGridItem(
+                            'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                            'Router'),
                       ],
                     ),
                   ),
@@ -75,9 +95,21 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SmallSquareContainer(imageUrl: 'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg', title: 'Headphones & more', offer: 'Up to 80% off'),
-                      SmallSquareContainer(imageUrl: 'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg', title: 'realme C30', offer: 'From ₹5,749'),
-                      SmallSquareContainer(imageUrl: 'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg', title: 'Jackets...', offer: 'Up to 80% off'),
+                      SmallSquareContainer(
+                          imageUrl:
+                              'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                          title: 'Headphones & more',
+                          offer: 'Up to 80% off'),
+                      SmallSquareContainer(
+                          imageUrl:
+                              'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                          title: 'realme C30',
+                          offer: 'From ₹5,749'),
+                      SmallSquareContainer(
+                          imageUrl:
+                              'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                          title: 'Jackets...',
+                          offer: 'Up to 80% off'),
                     ],
                   ),
                 ),
@@ -87,24 +119,25 @@ class HomePage extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      LangeSquareBox(imageUrl: 'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg', title: 'Headphones & more', subtitle: 'Provogue , Wrong & more' , price: 'Under ₹699'),
-                      LangeSquareBox(imageUrl: 'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg', title: 'Headphones & more', subtitle: 'Provogue , Wrong & more' , price: 'From ₹9,900*'),
+                      LangeSquareBox(
+                          imageUrl:
+                              'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                          title: 'Headphones & more',
+                          subtitle: 'Provogue , Wrong & more',
+                          price: 'Under ₹699'),
+                      LangeSquareBox(
+                          imageUrl:
+                              'https://rukminim1.flixcart.com/flap/400/400/image/5daee8f038724602.jpg',
+                          title: 'Headphones & more',
+                          subtitle: 'Provogue , Wrong & more',
+                          price: 'From ₹9,900*'),
                     ],
                   ),
                 ),
-                Divider(height: 2, color: Colors.grey.shade500,),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-                Container(height: 300, color: Colors.green, margin: EdgeInsets.symmetric(vertical: 10),),
-
+                Divider(
+                  height: 2,
+                  color: Colors.grey.shade500,
+                ),
               ],
             ),
           )
