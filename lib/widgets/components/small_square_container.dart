@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class SmallSquareContainer extends StatelessWidget {
@@ -15,6 +16,11 @@ class SmallSquareContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Icon _holderIcon = Icon(
+      Icons.image_outlined,
+      color: Colors.grey,
+      size: double.infinity,
+    );
     return Container(
       height: 120,
       width: 110,
@@ -31,9 +37,12 @@ class SmallSquareContainer extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                       topRight: Radius.circular(3),
                       topLeft: Radius.circular(3)),
-                  child: Image.network(
-                    imageUrl,
+                  child: CachedNetworkImage(
+                    imageUrl: imageUrl,
                     fit: BoxFit.cover,
+                    placeholder: (ctx , url) => _holderIcon,
+                    errorWidget: (ctx , url , error) => _holderIcon,
+
                   ))),
           FittedBox(
               child: Text(

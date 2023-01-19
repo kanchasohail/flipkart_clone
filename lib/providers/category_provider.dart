@@ -1,5 +1,8 @@
 import 'package:flipkart_clone/models/category_model.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+import '../models/category_card_model.dart';
 
 class CategoryProvider with ChangeNotifier{
   final _categoriesList = <CategoryModel>[
@@ -22,6 +25,21 @@ class CategoryProvider with ChangeNotifier{
     return [..._categoriesList].toList();
 }
 
- // https://rukminim1.flixcart.com/fk-p-flap/2000/2000/image/86411e6addfb2db6.jpg
+
+
+final _categoriesCardList = <CategoryCardModel> [
+  CategoryCardModel('Flipkart Samarth', 'Handicrafts , Decor , Art...', 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/6728ed3cf145562c.png' ,Colors.lightBlueAccent),
+  CategoryCardModel('Happy Winter', 'Clothing, Decor & more', 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/6728ed3cf145562c.png' ,Colors.lightBlueAccent),
+  CategoryCardModel('International Store', 'Brands Across the World', 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/6728ed3cf145562c.png' ,Colors.lightBlueAccent),
+  CategoryCardModel('Flipkart Green', 'The Sustainable Store', 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/6728ed3cf145562c.png' ,Colors.lightBlueAccent),
+  CategoryCardModel('Flipkart Originals', 'Fashion, Electronics, Beauty Appliances, Furniture...', 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/6728ed3cf145562c.png' ,Colors.lightBlueAccent),
+  CategoryCardModel('Travel Store', 'See the world with Ease', 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/6728ed3cf145562c.png' ,Colors.lightBlueAccent),
+  CategoryCardModel('Flipkart Emerging Brands', 'Innovative s Unique', 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/6728ed3cf145562c.png' ,Colors.teal),
+  CategoryCardModel('Launch Hub', 'New Launches', 'https://rukminim1.flixcart.com/fk-p-flap/128/128/image/6728ed3cf145562c.png' ,Colors.purple),
+];
+
+  List<CategoryCardModel> get  categoryCardListItems {
+    return [..._categoriesCardList].toList();
+}
 
 }
