@@ -1,5 +1,6 @@
 import 'package:flipkart_clone/providers/category_provider.dart';
 import 'package:flipkart_clone/providers/side_drawer_list_provider.dart';
+import 'package:flipkart_clone/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -50,7 +51,10 @@ class MyApp extends StatelessWidget {
               .copyWith(primary: Colors.blue, secondary: Colors.blueGrey),
         ),
 
-        routes: {MyHomeClass.routeName: (context) => MyHomeClass()},
+        routes: {
+          MyHomeClass.routeName: (context) => MyHomeClass(),
+          SearchScreen.routeName: (context) => SearchScreen(),
+        },
         // home: const MyHomeClass(),
         home: AnimatedSplashScreen(
           // splash: Icon(Icons.home),

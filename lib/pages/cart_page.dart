@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../providers/category_provider.dart';
-import '../widgets/components/rounded_category_item.dart';
+import '../widgets/components/not_signed_cart_page.dart';
 
 class CartPage extends StatefulWidget {
   static const routeName = '/cart-page';
@@ -16,8 +14,12 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Cart Page'),
-    );
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('My Cart' , style: TextStyle(color: Colors.black , fontFamily: 'rubik'),),
+        backgroundColor: Colors.grey.shade300,
+        shadowColor: Colors.transparent,
+      ),
+        body: NotSignedCartPage());
   }
 }
