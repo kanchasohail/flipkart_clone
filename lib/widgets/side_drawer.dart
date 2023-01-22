@@ -1,3 +1,4 @@
+import 'package:flipkart_clone/providers/auth_provider.dart';
 import 'package:flipkart_clone/providers/side_drawer_list_provider.dart';
 import 'package:flutter/material.dart';
 
@@ -80,9 +81,49 @@ class SideDrawer extends StatelessWidget {
                           child: Center(child:Text(snap.data.toString()),),
                         ),
             ),
+            Container(
+              height: 40,
+              child: AuthProvider.Login as bool ? TextButton.icon(onPressed: (){
+                // Provider.of<AuthProvider>(context , listen: false).logOut(context);
+                _showMyDialog(context);
+              }, icon: const Icon(Icons.logout , color: Colors.grey,), label: const Text('Log Out' , style: TextStyle(color: Colors.grey),),)
+             : SizedBox() ,
+            )
           ],
         ),
       ),
+    );
+  }
+  Future<void> _showMyDialog(BuildContext ctx) async {
+    return showDialog<void>(
+      context: ctx,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Confirm Log out'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: const <Widget>[
+                Text('Are you sure to logout.'),
+                Text('You will have to login again for buying something'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Log out'),
+              onPressed: () {
+                Provider.of<AuthProvider>(context , listen: false).logOut(context);
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

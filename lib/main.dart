@@ -1,7 +1,9 @@
 import 'package:flipkart_clone/providers/auth_provider.dart';
 import 'package:flipkart_clone/providers/category_provider.dart';
 import 'package:flipkart_clone/providers/side_drawer_list_provider.dart';
+import 'package:flipkart_clone/screens/enter_password_screen.dart';
 import 'package:flipkart_clone/screens/login_screen.dart';
+import 'package:flipkart_clone/screens/profile_screen.dart';
 import 'package:flipkart_clone/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -32,6 +34,11 @@ Future<void> main() async {
   await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   isViewed = prefs.getInt('chooseLanguage');
+  if(prefs.getBool('Login') == null){
+    AuthProvider.Login = false;
+  }else{
+    AuthProvider.Login = prefs.getBool('Login');
+  }
   runApp(const MyApp());
 }
 
@@ -61,6 +68,9 @@ class MyApp extends StatelessWidget {
           MyHomeClass.routeName: (context) => MyHomeClass(),
           SearchScreen.routeName: (context) => SearchScreen(),
           LoginScreen.routeName:(context) => LoginScreen(),
+          EnterPasswordScreen.routeName:(context) => EnterPasswordScreen(),
+          CartPage.routeName:(context) => CartPage(),
+          ProfileScreen.routeName:(context) => ProfileScreen(),
         },
         // home: const MyHomeClass(),
         home: AnimatedSplashScreen(

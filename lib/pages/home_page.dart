@@ -12,6 +12,7 @@ import '../widgets/components/sliding_item.dart';
 import '../widgets/components/square_grid_item.dart';
 
 class HomePage extends StatelessWidget {
+  static const routeName = '/home-page';
   HomePage({Key? key}) : super(key: key);
 
   @override
