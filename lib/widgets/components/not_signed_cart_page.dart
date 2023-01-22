@@ -1,3 +1,4 @@
+import 'package:flipkart_clone/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class NotSignedCartPage extends StatelessWidget {
@@ -13,7 +14,9 @@ class NotSignedCartPage extends StatelessWidget {
         const SizedBox(height: 10,),
         const Text('Missing Cart items?' , style: TextStyle(fontSize: 25 , fontWeight: FontWeight.bold),),
         const SizedBox(height: 10,),
-        ElevatedButton(onPressed: (){}, child: const Text('Login'))
+        ElevatedButton(onPressed: (){
+          Navigator.of(context).pushNamed(LoginScreen.routeName);
+        }, child: const Text('Login'))
       ],
     ));
   }

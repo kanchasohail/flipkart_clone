@@ -1,3 +1,4 @@
+import 'package:flipkart_clone/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class NotSignedNotificationPage extends StatelessWidget {
@@ -17,7 +18,9 @@ class NotSignedNotificationPage extends StatelessWidget {
               width: MediaQuery.of(context).size.width / 2,
               child: Text('Sign in to view personalised notifications and offers.' , style: TextStyle(color: Colors.grey , fontWeight: FontWeight.w500), textAlign: TextAlign.center),
             ),
-            ElevatedButton(onPressed: (){}, child: Text('Sign In'))
+            ElevatedButton(onPressed: (){
+              Navigator.of(context).pushNamed(LoginScreen.routeName);
+            }, child: Text('Sign In'))
           ],
         ),
       ),
