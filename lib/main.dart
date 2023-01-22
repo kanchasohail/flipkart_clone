@@ -1,5 +1,7 @@
+import 'package:flipkart_clone/providers/auth_provider.dart';
 import 'package:flipkart_clone/providers/category_provider.dart';
 import 'package:flipkart_clone/providers/side_drawer_list_provider.dart';
+import 'package:flipkart_clone/screens/login_screen.dart';
 import 'package:flipkart_clone/screens/search_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -21,10 +23,13 @@ import 'package:flipkart_clone/pages/notifications_page.dart';
 import 'package:flipkart_clone/widgets/side_drawer.dart';
 import 'package:flipkart_clone/widgets/splash_icon.dart';
 
+import 'package:firebase_core/firebase_core.dart';
+
 int? isViewed;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
   isViewed = prefs.getInt('chooseLanguage');
   runApp(const MyApp());
@@ -41,7 +46,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LogProvider()),
         ChangeNotifierProvider(create: (_) => LanguageProvider()),
         ChangeNotifierProvider(create: (_) => SideDrawerListProvider()),
-        ChangeNotifierProvider(create: (_) => CategoryProvider())
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (_) => AuthProvider()),
       ],
       child: MaterialApp(
         title: 'Flipkart Clone',
@@ -54,10 +60,10 @@ class MyApp extends StatelessWidget {
         routes: {
           MyHomeClass.routeName: (context) => MyHomeClass(),
           SearchScreen.routeName: (context) => SearchScreen(),
+          LoginScreen.routeName:(context) => LoginScreen(),
         },
         // home: const MyHomeClass(),
         home: AnimatedSplashScreen(
-          // splash: Icon(Icons.home),
           splash: SplashIcon(),
           duration: 2000,
           splashTransition: SplashTransition.fadeTransition,

@@ -1,3 +1,4 @@
+import 'package:flipkart_clone/screens/login_screen.dart';
 import 'package:flipkart_clone/widgets/components/account_page_list_cart.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,9 @@ class AccountPage extends StatelessWidget {
          child: Row(
            children: [
              Expanded(child: const Text('Log in to get exclusive offers' , style: TextStyle(fontSize: 14),)),
-             ElevatedButton(onPressed: (){}, child: Text('Log In'))
+             ElevatedButton(onPressed: (){
+               Navigator.of(context).pushNamed(LoginScreen.routeName);
+             }, child: Text('Log In'))
            ],
          ),
        ),

@@ -10,6 +10,7 @@ class SearchScreen extends StatelessWidget {
       body: SafeArea(
         child: Container(
           child: TextField(
+            autofocus: true,
             decoration: InputDecoration(
               hintText: 'Search for Products, Brand and More',
               contentPadding: EdgeInsets.symmetric(vertical: 12 , horizontal: 12),
