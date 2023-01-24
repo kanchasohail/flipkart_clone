@@ -65,6 +65,13 @@ class _EnterPasswordScreenState extends State<EnterPasswordScreen> {
                     keyboardType: TextInputType.visiblePassword,
                     obscureText: true,
                     // controller: _inputController,
+                    onSubmitted: (value){
+                      _validate(value);
+                      if(isValid){
+                        hasAccount ?  _authProvider.loginWithEmail(password, context) : _authProvider.signUpWithEmail(password , context);
+                      }
+                      return ;
+                    },
                     onChanged: (value) {
                       _validate(value);
                     },

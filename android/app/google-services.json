@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1008830067981-00h2roftitidrgku3a3n6m83ff2rqlnt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flipkart_clone",
+            "certificate_hash": "ef3193c62a120ab7b9c57e88b518295a3eb98668"
+          }
+        },
+        {
           "client_id": "1008830067981-ibli09p7bi0qutgs9ibauuignj8940at.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "1008830067981-ibli09p7bi0qutgs9ibauuignj8940at.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1008830067981-lekcop7vj9d6eka3oa9qdh5jnudt7g7i.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.flipkartClone"
+              }
             }
           ]
         }

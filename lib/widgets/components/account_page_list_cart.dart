@@ -1,3 +1,4 @@
+import 'package:flipkart_clone/screens/enter_otp_screen.dart';
 import 'package:flutter/material.dart';
 
 class AccountPageListCard extends StatelessWidget {
@@ -79,7 +80,11 @@ class AccountPageListCard extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: const Text('Feedback & Information' , style: TextStyle(fontSize: 16 , fontWeight: FontWeight.bold),),
               ),
-              ...feedback.map((item) => _row(item['icon'], item['title'])).toList(),
+              ...feedback.map((item) => GestureDetector(
+                onTap: (){
+                  // Navigator.of(context).pushNamed(EnterOtpScreen.routeName , arguments: '7488541900');
+                },
+                  child: _row(item['icon'], item['title']))).toList(),
             ],
           ),
         ),
