@@ -1,6 +1,7 @@
 import 'package:flipkart_clone/providers/auth_provider.dart';
 import 'package:flipkart_clone/providers/category_provider.dart';
 import 'package:flipkart_clone/providers/side_drawer_list_provider.dart';
+import 'package:flipkart_clone/screens/enter_otp_screen.dart';
 import 'package:flipkart_clone/screens/enter_password_screen.dart';
 import 'package:flipkart_clone/screens/login_screen.dart';
 import 'package:flipkart_clone/screens/profile_screen.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
           EnterPasswordScreen.routeName:(context) => EnterPasswordScreen(),
           CartPage.routeName:(context) => CartPage(),
           ProfileScreen.routeName:(context) => ProfileScreen(),
+          EnterOtpScreen.routeName:(context) => EnterOtpScreen(),
         },
         // home: const MyHomeClass(),
         home: AnimatedSplashScreen(

@@ -125,6 +125,13 @@ class _LoginFormState extends State<LoginForm> {
                       ? TextInputType.number
                       : TextInputType.emailAddress,
                   controller: _inputController,
+                  onSubmitted: (value){
+                    _validate(value);
+                    if (isValid) {
+                      isNumber ? widget._checkNumber(_inputController.text.toString()) : widget._checkEmail(_inputController.text.toString());
+                    }
+                    return;
+                  },
                   onChanged: (value) {
                     _validate(value);
                   },

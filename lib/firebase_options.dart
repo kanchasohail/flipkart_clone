@@ -67,6 +67,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1008830067981',
     projectId: 'flipkart-clone-d6b1f',
     storageBucket: 'flipkart-clone-d6b1f.appspot.com',
+    androidClientId: '1008830067981-00h2roftitidrgku3a3n6m83ff2rqlnt.apps.googleusercontent.com',
     iosClientId: '1008830067981-lekcop7vj9d6eka3oa9qdh5jnudt7g7i.apps.googleusercontent.com',
     iosBundleId: 'com.example.flipkartClone',
   );
@@ -77,6 +78,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '1008830067981',
     projectId: 'flipkart-clone-d6b1f',
     storageBucket: 'flipkart-clone-d6b1f.appspot.com',
+    androidClientId: '1008830067981-00h2roftitidrgku3a3n6m83ff2rqlnt.apps.googleusercontent.com',
     iosClientId: '1008830067981-lekcop7vj9d6eka3oa9qdh5jnudt7g7i.apps.googleusercontent.com',
     iosBundleId: 'com.example.flipkartClone',
   );

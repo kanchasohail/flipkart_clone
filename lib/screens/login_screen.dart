@@ -21,7 +21,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void _sendNumber(String number){
     final _authProvider = Provider.of<AuthProvider>(context , listen: false) ;
-    _authProvider.checkNumber(number);
+    // _authProvider.checkNumber(number);
+    _authProvider.getOtp(context ,number);
 
   }
 
