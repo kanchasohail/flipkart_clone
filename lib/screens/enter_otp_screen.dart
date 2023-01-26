@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flipkart_clone/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,32 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
   bool isValid = false;
 
   var code = '';
+  
+  bool isWaiting = false ;
+
+
+  Timer? _timer;
+  int _start = 60;
+
+  void _startTimer() {
+    isWaiting = true ;
+    const oneSec = const Duration(seconds: 1);
+    _timer = new Timer.periodic(
+      oneSec,
+          (Timer timer) {
+        if (_start == 0) {
+          setState(() {
+            timer.cancel();
+            isWaiting = false ;
+          });
+        } else {
+          setState(() {
+            _start--;
+          });
+        }
+      },
+    );
+  }
 
   void _validate(String input) {
     if (input.trim().length == 6) {
@@ -50,7 +78,7 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authProvider = Provider.of<AuthProvider>(context);
+    final authProvider = Provider.of<AuthProvider>(context , listen: false);
     final String phoneNumber =
         ModalRoute.of(context)?.settings.arguments as String;
 
@@ -122,6 +150,7 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
                         _validate(value);
                         if (isValid) {
                           authProvider.loginWithOtp(code, context);
+                          _startTimer() ;
                         }
                         return;
                       },
@@ -135,6 +164,7 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
                         _validate(value);
                         if (isValid) {
                           authProvider.loginWithOtp(code, context);
+                          _startTimer() ;
                         }
                       },
                       autofocus: true,
@@ -145,7 +175,15 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
                   Row(
                     children: [
                       const Expanded(child: SizedBox()),
-                      TextButton(onPressed: () {}, child: Text('Resend Otp')),
+                      TextButton(onPressed: () {
+                        if(!isWaiting){
+                          authProvider.getOtp(context, phoneNumber);
+                          _start = 60 ;
+                          _startTimer() ;
+                        }
+                        return ;
+                      }, child: !isWaiting ? Text('Resend Otp') : Text('Resend Otp in..$_start', style: TextStyle(color: Colors.grey),)
+                      ),
                     ],
                   ),
                   // const SizedBox(
@@ -173,6 +211,7 @@ class _EnterOtpScreenState extends State<EnterOtpScreen> {
               onPressed: () async {
                 if (isValid) {
                   authProvider.loginWithOtp(code, context);
+                  _startTimer() ;
                 }
                 return;
               },

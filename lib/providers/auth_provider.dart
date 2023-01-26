@@ -11,6 +11,7 @@ class AuthProvider with ChangeNotifier {
   UserCredential? authResult;
   String _email = '';
   String verId = '';
+  int resendToken = 0;
 
   Future<bool> checkEmail(String email) async {
     print('Email Check called $email ******');
@@ -30,8 +31,8 @@ class AuthProvider with ChangeNotifier {
     return false;
   }
 
-  void getOtp(BuildContext ctx, String phone) async {
-    final String phoneNumber = '+91 $phone';
+  void getOtp(BuildContext ctx, String phoneNumber) async {
+
     print('login called with this number $phoneNumber **********');
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
@@ -53,8 +54,10 @@ class AuthProvider with ChangeNotifier {
       },
       codeSent: (String verificationId, int? resendToken) async {
         verId = verificationId;
+        resendToken = resendToken ;
         Navigator.of(ctx).pushNamed(EnterOtpScreen.routeName , arguments: phoneNumber);
       },
+      forceResendingToken: resendToken,
       timeout: const Duration(seconds: 60),
       codeAutoRetrievalTimeout: (String verificationId) {
         verId = verificationId ;
